@@ -132,80 +132,59 @@ const SpecialMessage = ({ name = "Meu Amor" }: SpecialMessageProps) => {
             <span className="text-gradient-romantic">Minha Mensagem Para Você</span>
           </motion.h2>
 
-          <div className="space-y-8 text-lg md:text-xl leading-relaxed font-serif">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="relative"
+          >
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="relative"
+              animate={{ 
+                boxShadow: [
+                  "0 0 30px hsl(346 75% 58% / 0.15)",
+                  "0 0 60px hsl(346 75% 58% / 0.25)",
+                  "0 0 30px hsl(346 75% 58% / 0.15)",
+                ]
+              }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="bg-gradient-to-br from-card/40 via-card/30 to-primary/10 backdrop-blur-md border border-primary/30 rounded-3xl p-8 md:p-10"
             >
+              <p className="text-foreground/95 text-lg md:text-xl leading-relaxed font-serif text-center">
+                {name}, você é o amor que Deus escolheu para mim. Cada dia ao seu lado é uma bênção que agradeço do fundo do meu coração. Neste dia especial, quero que você saiba o quanto é amada, valorizada e admirada — você merece todo o amor do mundo. Que este novo ano de vida seja repleto de alegrias, conquistas e muito amor. Estarei sempre ao seu lado, te amando a cada dia mais, porque você é a maior prova de que Deus ouve as orações do meu coração.
+              </p>
+              
+              {/* Decorative corners */}
               <motion.div
-                animate={{ 
-                  boxShadow: [
-                    "0 0 20px hsl(346 75% 58% / 0.1)",
-                    "0 0 40px hsl(346 75% 58% / 0.2)",
-                    "0 0 20px hsl(346 75% 58% / 0.1)",
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="bg-card/30 backdrop-blur-sm border border-primary/20 rounded-2xl p-6"
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute top-4 left-4"
               >
-                <p className="text-foreground/90">
-                  {name}, você é o amor da minha vida. Cada dia ao seu lado é uma 
-                  bênção que agradeço do fundo do meu coração.
-                </p>
+                <Heart className="w-4 h-4 text-primary/50" fill="currentColor" />
+              </motion.div>
+              <motion.div
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                className="absolute top-4 right-4"
+              >
+                <Heart className="w-4 h-4 text-primary/50" fill="currentColor" />
+              </motion.div>
+              <motion.div
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                className="absolute bottom-4 left-4"
+              >
+                <Heart className="w-4 h-4 text-primary/50" fill="currentColor" />
+              </motion.div>
+              <motion.div
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+                className="absolute bottom-4 right-4"
+              >
+                <Heart className="w-4 h-4 text-primary/50" fill="currentColor" />
               </motion.div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
-              <motion.div
-                animate={{ 
-                  boxShadow: [
-                    "0 0 20px hsl(346 75% 58% / 0.1)",
-                    "0 0 40px hsl(346 75% 58% / 0.2)",
-                    "0 0 20px hsl(346 75% 58% / 0.1)",
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                className="bg-card/30 backdrop-blur-sm border border-accent/20 rounded-2xl p-6"
-              >
-                <p className="text-foreground/90">
-                  Neste dia especial, quero que você saiba o quanto você é amada, 
-                  valorizada e admirada. Você merece todo o amor do mundo.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
-            >
-              <motion.div
-                animate={{ 
-                  boxShadow: [
-                    "0 0 20px hsl(346 75% 58% / 0.1)",
-                    "0 0 40px hsl(346 75% 58% / 0.2)",
-                    "0 0 20px hsl(346 75% 58% / 0.1)",
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity, delay: 2 }}
-                className="bg-card/30 backdrop-blur-sm border border-primary/20 rounded-2xl p-6"
-              >
-                <p className="text-foreground/90">
-                  Que este novo ano de vida seja repleto de alegrias, conquistas 
-                  e muito amor. Estarei sempre ao seu lado, te amando a cada dia mais.
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
