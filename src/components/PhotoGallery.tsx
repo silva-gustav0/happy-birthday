@@ -18,9 +18,9 @@ const PhotoGallery = () => {
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
   
   const photos: Photo[] = [
-    { id: 1, src: foto3, caption: "Foi essa foto que me fez perder o fôlego. Naquele momento eu senti algo diferente — e soube que tinha me apaixonado por você." },
-    { id: 2, src: foto1, caption: "Sonho em viver cada aventura ao seu lado — cada viagem, cada risada, cada silêncio confortável. Meu lugar é onde você estiver." },
-    { id: 3, src: foto2, caption: "Você é minha pessoa. Quero envelhecer ao seu lado, celebrar cada conquista, cada Natal, cada momento que a vida nos der." },
+    { id: 1, src: foto2, caption: "Foi essa foto que me fez perder o fôlego. Naquele momento eu senti algo diferente — e soube que tinha me apaixonado por você." },
+    { id: 2, src: foto3, caption: "Sonho em viver cada aventura ao seu lado — cada viagem, cada risada, cada silêncio confortável. Meu lugar é onde você estiver." },
+    { id: 3, src: foto1, caption: "Você é minha pessoa. Quero envelhecer ao seu lado, celebrar cada conquista, cada Natal, cada momento que a vida nos der." },
     { id: 4, src: foto4, caption: "A cada dia você me faz transbordar de felicidade. Minha maior vontade é te ver sorrindo assim, sempre." },
   ];
 
@@ -235,21 +235,19 @@ const PhotoGallery = () => {
                     <span className="text-white font-bold">{index + 1}</span>
                   </motion.div>
                   
-                  {/* Overlay com caption */}
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-8"
-                    initial={{ y: 20 }}
-                    whileHover={{ y: 0 }}
+                  {/* Caption sempre visível (sem atraso), com animação sutil */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/55 to-transparent opacity-100 flex items-end p-8"
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
                   >
-                    <motion.div 
-                      className="text-foreground"
-                      initial={{ y: 20, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.1 }}
-                    >
+                    <motion.div className="text-foreground">
                       <motion.div
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                        animate={{ scale: [1, 1.12, 1] }}
+                        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                       >
                         <Heart className="w-6 h-6 mb-4 text-primary" fill="currentColor" />
                       </motion.div>
