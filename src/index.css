@@ -6,96 +6,59 @@
 
 @layer base {
   :root {
-    --background: 20 33% 98%;
-    --foreground: 346 25% 20%;
+    /* Dark romantic theme as default */
+    --background: 346 30% 6%;
+    --foreground: 20 30% 92%;
 
-    --card: 20 40% 97%;
-    --card-foreground: 346 25% 20%;
+    --card: 346 25% 10%;
+    --card-foreground: 20 30% 92%;
 
-    --popover: 20 40% 97%;
-    --popover-foreground: 346 25% 20%;
+    --popover: 346 25% 10%;
+    --popover-foreground: 20 30% 92%;
 
-    --primary: 346 77% 55%;
+    --primary: 346 75% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 20 30% 94%;
-    --secondary-foreground: 346 25% 25%;
+    --secondary: 346 20% 14%;
+    --secondary-foreground: 20 30% 88%;
 
-    --muted: 20 20% 92%;
-    --muted-foreground: 346 15% 45%;
+    --muted: 346 18% 16%;
+    --muted-foreground: 20 20% 60%;
 
-    --accent: 38 70% 60%;
-    --accent-foreground: 38 80% 15%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 346 20% 88%;
-    --input: 346 20% 88%;
-    --ring: 346 77% 55%;
-
-    --radius: 0.75rem;
-
-    /* Custom romantic colors */
-    --rose-light: 346 60% 92%;
-    --rose-medium: 346 65% 75%;
-    --rose-dark: 346 50% 35%;
-    --gold: 38 70% 55%;
-    --gold-light: 38 60% 85%;
-    --burgundy: 346 60% 25%;
-    --cream: 35 40% 95%;
-
-    /* Gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(346 77% 55%) 0%, hsl(346 60% 45%) 50%, hsl(38 70% 55%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(20 33% 98%) 0%, hsl(346 60% 96%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38 70% 55%) 0%, hsl(38 80% 65%) 100%);
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 346 30% 8%;
-    --foreground: 20 30% 95%;
-
-    --card: 346 25% 12%;
-    --card-foreground: 20 30% 95%;
-
-    --popover: 346 25% 12%;
-    --popover-foreground: 20 30% 95%;
-
-    --primary: 346 70% 60%;
-    --primary-foreground: 346 30% 10%;
-
-    --secondary: 346 20% 18%;
-    --secondary-foreground: 20 30% 90%;
-
-    --muted: 346 20% 20%;
-    --muted-foreground: 20 20% 65%;
-
-    --accent: 38 65% 50%;
+    --accent: 38 70% 55%;
     --accent-foreground: 38 80% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 346 20% 20%;
-    --input: 346 20% 20%;
-    --ring: 346 70% 60%;
+    --border: 346 25% 18%;
+    --input: 346 25% 18%;
+    --ring: 346 75% 58%;
 
-    --rose-light: 346 40% 20%;
-    --rose-medium: 346 50% 45%;
-    --rose-dark: 346 60% 70%;
-    --gold: 38 60% 50%;
-    --gold-light: 38 40% 25%;
-    --burgundy: 346 50% 75%;
-    --cream: 35 20% 15%;
+    --radius: 0.75rem;
+
+    /* Custom romantic colors - dark theme */
+    --rose-light: 346 40% 18%;
+    --rose-medium: 346 55% 50%;
+    --rose-dark: 346 65% 68%;
+    --gold: 38 65% 52%;
+    --gold-light: 38 45% 25%;
+    --burgundy: 346 55% 70%;
+    --cream: 35 15% 12%;
+
+    /* Gradients - dark theme */
+    --gradient-romantic: linear-gradient(135deg, hsl(346 75% 45%) 0%, hsl(346 60% 35%) 50%, hsl(38 70% 45%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(346 30% 6%) 0%, hsl(346 35% 10%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 70% 45%) 0%, hsl(38 80% 55%) 100%);
+
+    --sidebar-background: 346 30% 8%;
+    --sidebar-foreground: 20 30% 90%;
+    --sidebar-primary: 346 75% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 346 20% 14%;
+    --sidebar-accent-foreground: 20 30% 90%;
+    --sidebar-border: 346 25% 18%;
+    --sidebar-ring: 346 75% 58%;
   }
 }
 
