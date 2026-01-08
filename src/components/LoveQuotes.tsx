@@ -1,29 +1,54 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Heart, Quote } from "lucide-react";
+import { Heart, Quote, Sparkles } from "lucide-react";
 
 const LoveQuotes = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  
   const qualities = [
     {
       title: "Seu Sorriso",
       description: "Ilumina meus dias mais escuros e me faz querer ser uma pessoa melhor.",
+      emoji: "😊",
     },
     {
       title: "Seu Coração",
       description: "Tão gentil e amoroso, que me acolhe em todos os momentos.",
+      emoji: "💕",
     },
     {
       title: "Sua Força",
       description: "Me inspira a nunca desistir e a enfrentar qualquer desafio ao seu lado.",
+      emoji: "💪",
     },
     {
       title: "Seu Amor",
       description: "É o maior presente que eu poderia receber nesta vida.",
+      emoji: "❤️‍🔥",
     },
   ];
 
   return (
-    <section className="py-20 px-4 bg-background">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-20 px-4 bg-background relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-20 right-10 text-6xl opacity-10"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
+          ❤️
+        </motion.div>
+        <motion.div
+          className="absolute bottom-20 left-10 text-4xl opacity-10"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        >
+          💕
+        </motion.div>
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +56,15 @@ const LoveQuotes = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <Quote className="w-10 h-10 mx-auto text-accent mb-4" />
+          <motion.div
+            animate={{ 
+              y: [0, -10, 0],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            <Quote className="w-10 h-10 mx-auto text-accent mb-4" />
+          </motion.div>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
             Por Que Te Amo
           </h2>
@@ -44,27 +77,71 @@ const LoveQuotes = () => {
           {qualities.map((quality, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30, rotate: index % 2 === 0 ? -5 : 5 }}
+              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
               className="group"
             >
-              <div className="p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-full bg-rose-light text-primary group-hover:scale-110 transition-transform duration-300">
+              <motion.div 
+                className="p-8 rounded-2xl bg-card border border-border transition-all duration-300 relative overflow-hidden"
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px -15px hsl(346 75% 58% / 0.25)",
+                  borderColor: "hsl(346 75% 58% / 0.5)"
+                }}
+              >
+                {/* Animated background on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+                
+                <div className="flex items-start gap-4 relative z-10">
+                  <motion.div 
+                    className="p-3 rounded-full bg-primary/10 text-primary"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <Heart className="w-5 h-5" fill="currentColor" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-2xl font-semibold text-foreground mb-2">
-                      {quality.title}
-                    </h3>
+                  </motion.div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="font-display text-2xl font-semibold text-foreground">
+                        {quality.title}
+                      </h3>
+                      <motion.span
+                        animate={hoveredIndex === index ? { 
+                          scale: [1, 1.3, 1],
+                          rotate: [0, 15, -15, 0]
+                        } : {}}
+                        transition={{ duration: 0.5 }}
+                        className="text-xl"
+                      >
+                        {quality.emoji}
+                      </motion.span>
+                    </div>
                     <p className="text-muted-foreground leading-relaxed font-serif">
                       {quality.description}
                     </p>
                   </div>
                 </div>
-              </div>
+
+                {/* Floating sparkles on hover */}
+                {hoveredIndex === index && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute top-2 right-2"
+                  >
+                    <Sparkles className="w-4 h-4 text-accent animate-sparkle" />
+                  </motion.div>
+                )}
+              </motion.div>
             </motion.div>
           ))}
         </div>
