@@ -7,10 +7,10 @@ const InteractiveLoveNotes = () => {
   const [showFinalMessage, setShowFinalMessage] = useState(false);
 
   const loveNotes = [
-    { icon: Heart, message: "Você é a pessoa que eu escolhi para dividir a vida. Minha melhor escolha.", color: "from-rose-500 to-pink-600" },
-    { icon: Star, message: "Cada momento ao seu lado se torna uma memória que guardo para sempre.", color: "from-amber-500 to-orange-500" },
-    { icon: Gift, message: "Você transforma dias comuns em histórias que eu quero contar para sempre.", color: "from-violet-500 to-purple-600" },
-    { icon: Sparkles, message: "Com você aprendi o que é amar de verdade. Obrigado por existir na minha vida.", color: "from-cyan-500 to-blue-500" },
+    { icon: Heart, message: "Você é a pessoa que Deus colocou na minha vida. A melhor escolha que Ele fez por mim.", color: "from-rose-500 to-pink-600" },
+    { icon: Star, message: "Cada momento ao seu lado é uma bênção que agradeço a Deus todos os dias.", color: "from-amber-500 to-orange-500" },
+    { icon: Gift, message: "Você transforma dias comuns em histórias que quero viver para sempre ao seu lado.", color: "from-violet-500 to-purple-600" },
+    { icon: Sparkles, message: "Com você aprendi o que é amar de verdade. Deus sabia o que fazia quando te colocou no meu caminho.", color: "from-cyan-500 to-blue-500" },
   ];
 
   const handleReveal = (index: number) => {
@@ -107,10 +107,10 @@ const InteractiveLoveNotes = () => {
           </motion.div>
           
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Recadinhos Para Você
+            Bilhetes Para Você
           </h2>
           <p className="text-muted-foreground text-lg">
-            Toque em cada envelope e descubra o que guardei para você 💌
+            Toque em cada envelope e leia o que escrevi com o coração 💌
           </p>
         </motion.div>
 
@@ -265,10 +265,10 @@ const InteractiveLoveNotes = () => {
                   </motion.div>
                   
                   <p className="font-display text-2xl md:text-3xl text-foreground mb-3">
-                    Você é meu mundo inteiro
+                    Você é a resposta das minhas orações
                   </p>
                   <p className="text-gradient-romantic font-display text-3xl md:text-4xl font-bold">
-                    E Eu Te Amo Demais! 💕
+                    O presente que Deus me deu! 🙏💕
                   </p>
                 </motion.div>
 
