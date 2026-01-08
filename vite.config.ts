@@ -4,19 +4,24 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  // Para GitHub Pages, defina o base como o nome do repositório
-  // Ex: se o repo for "meu-site", use base: "/meu-site/"
-  // Deixe "./" para deploy no Lovable ou domínio próprio
-  base: "./",
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+export default defineConfig(({ mode }) => {
+  const repo = process.env.GITHUB_REPOSITORY?.split("/")[1];
+
+  // Em produção no GitHub Pages, a URL base costuma ser "/<nome-do-repo>/".
+  // Em desenvolvimento/local e preview do Lovable, mantenha "/".
+  const base = mode === "production" && repo ? `/${repo}/` : "/";
+
+  return {
+    base,
+    server: {
+      host: "::",
+      port: 8080,
     },
-  },
-}));
+    plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+  };
+});
