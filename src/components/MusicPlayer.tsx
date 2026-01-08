@@ -71,7 +71,7 @@ const MusicPlayer = () => {
                 Um Pedacinho do Que Sinto
               </h2>
               <p className="text-muted-foreground mb-8 max-w-md">
-                Isso é só uma migalha de tudo que transborda em mim quando penso em você. Aperta o play e sente comigo 🎵
+                Isso é uma migalha do que sinto quando penso em você. Aumenta o volume 🎵
               </p>
               
               <motion.button
