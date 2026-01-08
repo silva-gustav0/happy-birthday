@@ -1,49 +1,43 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Camera, Heart, ImagePlus, X, ZoomIn } from "lucide-react";
+import { Camera, Heart, X, ZoomIn } from "lucide-react";
+import foto1 from "@/assets/foto1.jpg";
+import foto2 from "@/assets/foto2.jpg";
+import foto3 from "@/assets/foto3.jpg";
+import foto4 from "@/assets/foto4.jpg";
 
 interface Photo {
   id: number;
-  src?: string;
-  caption?: string;
+  src: string;
+  caption: string;
 }
 
-interface PhotoGalleryProps {
-  photos?: Photo[];
-}
-
-const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
+const PhotoGallery = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   
-  // Placeholder photos - substituir pelas fotos reais
-  const defaultPhotos: Photo[] = [
-    { id: 1, caption: "Nosso primeiro encontro" },
-    { id: 2, caption: "Momentos especiais" },
-    { id: 3, caption: "Juntos sempre" },
-    { id: 4, caption: "Meu sorriso favorito" },
-    { id: 5, caption: "Amor da minha vida" },
-    { id: 6, caption: "Para sempre" },
+  const photos: Photo[] = [
+    { id: 1, src: foto1, caption: "A foto que me fez apaixonar por você... Esse olhar, esse sorriso, tudo em você me encantou desde o primeiro momento." },
+    { id: 2, src: foto2, caption: "Quero viver cada pôr do sol ao seu lado, cada aventura, cada momento. Meu lugar favorito no mundo é onde você está." },
+    { id: 3, src: foto3, caption: "Você é a pessoa mais especial da minha vida. Quero passar o resto dos meus dias com você, comemorando cada Natal, cada data especial, sempre juntos." },
+    { id: 4, src: foto4, caption: "Você me faz mais feliz a cada dia que passa. Meu amor por você só cresce, e não existe nada que eu queira mais do que te fazer feliz também." },
   ];
-
-  const displayPhotos = photos || defaultPhotos;
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.9, rotate: -5 },
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      rotate: 0,
       transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
@@ -51,7 +45,7 @@ const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
   return (
     <>
       <section className="py-20 px-4 bg-secondary/30">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -78,66 +72,46 @@ const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
-            {displayPhotos.map((photo, index) => (
+            {photos.map((photo, index) => (
               <motion.div
                 key={photo.id}
                 variants={itemVariants}
                 whileHover={{ 
-                  y: -12, 
+                  y: -8, 
                   scale: 1.02,
-                  rotate: index % 2 === 0 ? 2 : -2,
                   transition: { duration: 0.3 } 
                 }}
-                onClick={() => photo.src && setSelectedPhoto(photo)}
+                onClick={() => setSelectedPhoto(photo)}
                 className="group relative cursor-pointer"
               >
                 <motion.div 
-                  className="aspect-[4/5] rounded-2xl overflow-hidden bg-card border border-border shadow-lg shadow-primary/5 flex flex-col items-center justify-center relative"
+                  className="aspect-[4/5] rounded-2xl overflow-hidden bg-card border border-border shadow-lg shadow-primary/10 relative"
                   whileHover={{ 
-                    boxShadow: "0 20px 40px -15px hsl(346 75% 58% / 0.3)",
+                    boxShadow: "0 20px 40px -15px hsl(346 75% 58% / 0.4)",
                   }}
                 >
-                  {photo.src ? (
-                    <>
-                      <img
-                        src={photo.src}
-                        alt={photo.caption}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <ZoomIn className="w-6 h-6 text-white drop-shadow-lg" />
-                      </div>
-                    </>
-                  ) : (
-                    <div className="text-center p-6">
-                      <motion.div
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <ImagePlus className="w-12 h-12 mx-auto text-muted-foreground/50 mb-3" />
-                      </motion.div>
-                      <p className="text-muted-foreground/70 font-serif text-sm">
-                        Adicionar foto
-                      </p>
+                  <img
+                    src={photo.src}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  
+                  {/* Zoom icon */}
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-background/80 backdrop-blur-sm rounded-full p-2">
+                      <ZoomIn className="w-5 h-5 text-foreground" />
                     </div>
-                  )}
+                  </div>
                   
                   {/* Overlay com caption */}
                   <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
-                    initial={false}
+                    className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
                   >
                     <div className="text-foreground">
-                      <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                      >
-                        <Heart className="w-5 h-5 mb-2 text-primary" fill="currentColor" />
-                        <p className="font-display text-lg">{photo.caption}</p>
-                      </motion.div>
+                      <Heart className="w-5 h-5 mb-3 text-primary" fill="currentColor" />
+                      <p className="font-serif text-sm md:text-base leading-relaxed">{photo.caption}</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -155,13 +129,13 @@ const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedPhoto(null)}
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-background/98 backdrop-blur-sm flex items-center justify-center p-4"
           >
             <motion.button
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
-              className="absolute top-6 right-6 p-2 bg-card rounded-full border border-border"
+              className="absolute top-6 right-6 p-2 bg-card rounded-full border border-border hover:bg-primary/20 transition-colors"
               onClick={() => setSelectedPhoto(null)}
             >
               <X className="w-6 h-6 text-foreground" />
@@ -172,21 +146,24 @@ const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-4xl max-h-[80vh] relative"
+              className="max-w-3xl max-h-[85vh] relative flex flex-col items-center"
             >
               <img
                 src={selectedPhoto.src}
                 alt={selectedPhoto.caption}
-                className="max-w-full max-h-[80vh] object-contain rounded-2xl"
+                className="max-w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl"
               />
-              <motion.p
+              <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-center mt-4 font-display text-xl text-foreground"
+                className="mt-6 text-center max-w-xl"
               >
-                {selectedPhoto.caption}
-              </motion.p>
+                <Heart className="w-6 h-6 mx-auto mb-3 text-primary" fill="currentColor" />
+                <p className="font-serif text-lg text-foreground/90 leading-relaxed">
+                  {selectedPhoto.caption}
+                </p>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}

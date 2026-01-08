@@ -6,7 +6,7 @@ import SpecialMessage from "@/components/SpecialMessage";
 import Footer from "@/components/Footer";
 import MusicPlayer from "@/components/MusicPlayer";
 import InteractiveLoveNotes from "@/components/InteractiveLoveNotes";
-import HeartCounter from "@/components/HeartCounter";
+import LovePromise from "@/components/LovePromise";
 
 const Index = () => {
   // Personalize aqui o nome da sua namorada
@@ -20,7 +20,7 @@ const Index = () => {
       <PhotoGallery />
       <InteractiveLoveNotes />
       <LoveQuotes />
-      <HeartCounter />
+      <LovePromise />
       <SpecialMessage name={girlfriendName} />
       <Footer />
     </main>
