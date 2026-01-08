@@ -68,10 +68,10 @@ const MusicPlayer = () => {
               </motion.div>
               
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-                Uma Surpresa Especial
+                Um Pedacinho do Que Sinto
               </h2>
               <p className="text-muted-foreground mb-8 max-w-md">
-                Preparei algo especial para você. Clique para começar a experiência com música 🎵
+                Isso é só uma migalha de tudo que transborda em mim quando penso em você. Aperta o play e sente comigo 🎵
               </p>
               
               <motion.button
