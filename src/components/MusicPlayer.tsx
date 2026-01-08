@@ -5,7 +5,7 @@ import { Volume2, VolumeX, Music } from "lucide-react";
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPrompt, setShowPrompt] = useState(true);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const handlePlay = () => {
     setIsPlaying(true);
@@ -16,20 +16,26 @@ const MusicPlayer = () => {
     setIsPlaying(false);
   };
 
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.currentTime = 26;
+        audioRef.current.play().catch(() => {});
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
+
   return (
     <>
-      {/* Hidden YouTube iframe for audio - starts at 28 seconds */}
-      {isPlaying && (
-        <iframe
-          ref={iframeRef}
-          className="hidden"
-          width="0"
-          height="0"
-          src="https://www.youtube.com/embed/moINq-uxPtY?autoplay=1&start=28&loop=1&playlist=moINq-uxPtY"
-          allow="autoplay"
-          title="Background Music"
-        />
-      )}
+      {/* Audio element com arquivo local */}
+      <audio
+        ref={audioRef}
+        src="/music/alianca.mp3"
+        loop
+        preload="auto"
+      />
 
       {/* Prompt to start music */}
       <AnimatePresence>

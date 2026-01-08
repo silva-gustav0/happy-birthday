@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles, Stars, Flower2 } from "lucide-react";
 
 interface SpecialMessageProps {
@@ -6,6 +7,8 @@ interface SpecialMessageProps {
 }
 
 const SpecialMessage = ({ name = "Meu Amor" }: SpecialMessageProps) => {
+  const [showLoveAnimation, setShowLoveAnimation] = useState(false);
+
   return (
     <section className="py-24 px-4 bg-gradient-to-b from-background via-[hsl(346,30%,8%)] to-[hsl(346,40%,6%)] text-foreground relative overflow-hidden">
       {/* Animated starfield background */}
@@ -193,12 +196,11 @@ const SpecialMessage = ({ name = "Meu Amor" }: SpecialMessageProps) => {
             transition={{ delay: 0.9 }}
             className="mt-14"
           >
-            <motion.div
-              animate={{ 
-                y: [0, -8, 0],
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="inline-flex items-center gap-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-8 py-4"
+            <motion.button
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowLoveAnimation(true)}
+              className="inline-flex items-center gap-4 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 backdrop-blur-sm border border-primary/40 rounded-full px-8 py-4 cursor-pointer hover:border-primary/60 transition-colors"
             >
               <motion.div
                 animate={{ scale: [1, 1.3, 1] }}
@@ -215,10 +217,169 @@ const SpecialMessage = ({ name = "Meu Amor" }: SpecialMessageProps) => {
               >
                 <Heart className="w-6 h-6 text-primary" fill="currentColor" />
               </motion.div>
-            </motion.div>
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Love Animation Modal */}
+      <AnimatePresence>
+        {showLoveAnimation && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowLoveAnimation(false)}
+            className="fixed inset-0 z-50 bg-background/98 backdrop-blur-xl flex items-center justify-center cursor-pointer"
+          >
+            {/* Massive heart explosion background */}
+            {[...Array(60)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute"
+                initial={{ 
+                  scale: 0,
+                  opacity: 0,
+                  x: 0,
+                  y: 0,
+                }}
+                animate={{ 
+                  scale: [0, 1.5, 1],
+                  opacity: [0, 1, 0.6],
+                  x: (Math.random() - 0.5) * window.innerWidth * 0.8,
+                  y: (Math.random() - 0.5) * window.innerHeight * 0.8,
+                  rotate: Math.random() * 360,
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 2,
+                  delay: Math.random() * 0.8,
+                  ease: "easeOut",
+                }}
+              >
+                <Heart 
+                  className="text-primary" 
+                  fill="currentColor"
+                  style={{
+                    width: `${20 + Math.random() * 40}px`,
+                    height: `${20 + Math.random() * 40}px`,
+                    filter: `blur(${Math.random() * 2}px)`,
+                  }}
+                />
+              </motion.div>
+            ))}
+
+            {/* Sparkle particles */}
+            {[...Array(40)].map((_, i) => (
+              <motion.div
+                key={`sparkle-${i}`}
+                className="absolute w-2 h-2 bg-accent rounded-full"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{
+                  scale: [0, 1, 0],
+                  opacity: [0, 1, 0],
+                  x: (Math.random() - 0.5) * window.innerWidth,
+                  y: (Math.random() - 0.5) * window.innerHeight,
+                }}
+                transition={{
+                  duration: 2.5,
+                  delay: 0.5 + Math.random() * 1.5,
+                  ease: "easeOut",
+                }}
+              />
+            ))}
+
+            {/* Main content */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.3,
+                type: "spring",
+                damping: 15,
+              }}
+              className="text-center z-10 relative"
+            >
+              {/* Giant pulsing heart */}
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.15, 1],
+                }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                className="mb-8"
+              >
+                <motion.div
+                  animate={{
+                    filter: [
+                      "drop-shadow(0 0 30px hsl(346 75% 58% / 0.5))",
+                      "drop-shadow(0 0 60px hsl(346 75% 58% / 0.8))",
+                      "drop-shadow(0 0 30px hsl(346 75% 58% / 0.5))",
+                    ]
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <Heart className="w-32 h-32 md:w-48 md:h-48 text-primary mx-auto" fill="currentColor" />
+                </motion.div>
+              </motion.div>
+
+              {/* Text animation */}
+              <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+              >
+                <motion.h2
+                  animate={{
+                    textShadow: [
+                      "0 0 20px hsl(346 75% 58% / 0.3)",
+                      "0 0 40px hsl(346 75% 58% / 0.6)",
+                      "0 0 20px hsl(346 75% 58% / 0.3)",
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6"
+                >
+                  Com todo meu amor,
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.2, duration: 0.6 }}
+                  className="font-display text-3xl md:text-5xl text-primary italic mb-8"
+                >
+                  para sempre
+                </motion.p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.6, duration: 0.8 }}
+                className="mt-8"
+              >
+                <motion.span
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="inline-block font-display text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-romantic"
+                >
+                  Eu te amo ❤️
+                </motion.span>
+              </motion.div>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.6 }}
+                transition={{ delay: 2.5 }}
+                className="mt-12 text-muted-foreground text-sm"
+              >
+                Toque em qualquer lugar para fechar
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

@@ -18,9 +18,9 @@ const PhotoGallery = () => {
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
   
   const photos: Photo[] = [
-    { id: 1, src: foto2, caption: "Foi essa foto que me fez perder o fôlego. Naquele momento eu senti algo diferente — e soube que tinha me apaixonado por você." },
-    { id: 2, src: foto3, caption: "Sonho em viver cada aventura ao seu lado — cada viagem, cada risada, cada silêncio confortável. Meu lugar é onde você estiver." },
-    { id: 3, src: foto1, caption: "Você é minha pessoa. Quero envelhecer ao seu lado, celebrar cada conquista, cada Natal, cada momento que a vida nos der." },
+    { id: 1, src: foto3, caption: "Foi essa foto que me fez perder o fôlego. Naquele momento eu senti algo diferente — e soube que tinha me apaixonado por você." },
+    { id: 2, src: foto1, caption: "Sonho em viver cada aventura ao seu lado — cada viagem, cada risada, cada silêncio confortável. Meu lugar é onde você estiver." },
+    { id: 3, src: foto2, caption: "Você é minha pessoa. Quero envelhecer ao seu lado, celebrar cada conquista, cada Natal, cada momento que a vida nos der." },
     { id: 4, src: foto4, caption: "A cada dia você me faz transbordar de felicidade. Minha maior vontade é te ver sorrindo assim, sempre." },
   ];
 
