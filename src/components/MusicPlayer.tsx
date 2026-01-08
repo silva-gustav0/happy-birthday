@@ -32,7 +32,7 @@ const MusicPlayer = () => {
       {/* Audio element com arquivo local */}
       <audio
         ref={audioRef}
-        src="/music/alianca.mp3"
+        src={`${import.meta.env.BASE_URL}music/alianca.mp3`}
         loop
         preload="auto"
       />
