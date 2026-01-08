@@ -131,10 +131,10 @@ const LovePromise = () => {
                 <Heart className="w-10 h-10 text-primary" fill="currentColor" />
               </motion.div>
               <p className="font-display text-2xl md:text-3xl text-foreground mb-2">
-                Meu amor por você é
+                Você é o melhor presente
               </p>
               <p className="text-gradient-romantic font-display text-4xl md:text-5xl font-bold">
-                Infinito e Eterno
+                Que a Vida Me Deu
               </p>
             </div>
           </motion.div>

@@ -7,9 +7,9 @@ const LoveQuotes = () => {
   
   const qualities = [
     {
-      title: "Seu Sorriso",
-      description: "Ilumina meus dias mais escuros e me faz querer ser uma pessoa melhor.",
-      emoji: "😊",
+      title: "Seu Jeito Único",
+      description: "A forma como você vê o mundo me encanta. Seu olhar, sua essência, tudo em você é especial.",
+      emoji: "✨",
     },
     {
       title: "Seu Coração",
@@ -17,9 +17,9 @@ const LoveQuotes = () => {
       emoji: "💕",
     },
     {
-      title: "Sua Força",
-      description: "Me inspira a nunca desistir e a enfrentar qualquer desafio ao seu lado.",
-      emoji: "💪",
+      title: "Sua Dedicação",
+      description: "Em tudo que você faz, você se entrega de corpo e alma. Isso me inspira todos os dias.",
+      emoji: "🌟",
     },
     {
       title: "Seu Amor",

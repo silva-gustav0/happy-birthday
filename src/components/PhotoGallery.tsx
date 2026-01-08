@@ -16,10 +16,10 @@ const PhotoGallery = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   
   const photos: Photo[] = [
-    { id: 1, src: foto1, caption: "A foto que me fez apaixonar por você... Esse olhar, esse sorriso, tudo em você me encantou desde o primeiro momento." },
-    { id: 2, src: foto2, caption: "Quero viver cada pôr do sol ao seu lado, cada aventura, cada momento. Meu lugar favorito no mundo é onde você está." },
-    { id: 3, src: foto3, caption: "Você é a pessoa mais especial da minha vida. Quero passar o resto dos meus dias com você, comemorando cada Natal, cada data especial, sempre juntos." },
-    { id: 4, src: foto4, caption: "Você me faz mais feliz a cada dia que passa. Meu amor por você só cresce, e não existe nada que eu queira mais do que te fazer feliz também." },
+    { id: 1, src: foto3, caption: "Foi essa foto que fez meu coração disparar. Seus olhos, seu sorriso... naquele momento eu soube que você seria especial na minha vida." },
+    { id: 2, src: foto1, caption: "Sonho em viver cada aventura ao seu lado — cada viagem, cada risada, cada silêncio confortável. Meu lugar é onde você estiver." },
+    { id: 3, src: foto2, caption: "Você é minha pessoa. Quero envelhecer ao seu lado, celebrar cada conquista, cada Natal, cada momento que a vida nos der." },
+    { id: 4, src: foto4, caption: "A cada dia você me faz transbordar de felicidade. Minha maior vontade é te ver sorrindo assim, sempre." },
   ];
 
   const containerVariants = {
